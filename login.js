@@ -26,7 +26,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // List of allowed admin emails
-const allowedEmails = ["shakesmofokeng88@gmail.com", "kaylynbotha37@gmail.com"];
+const allowedEmails = ["shakesmofokeng88@gmail.com", "linvaroleather@gmail.com"];
 
 // DOM elements
 const emailInput = document.getElementById("email");
