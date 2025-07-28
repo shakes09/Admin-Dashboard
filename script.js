@@ -21,7 +21,7 @@ const auth = getAuth();
 
 // 🔒 Protect dashboard with auth check
 onAuthStateChanged(auth, user => {
-  const allowedEmails = ["kaylynbotha37@gmail.com", "shakesmofokeng88@gmail.com"];
+  const allowedEmails = ["linvaroleather@gmail.com", "shakesmofokeng88@gmail.com"];
   if (!user || !user.emailVerified || !allowedEmails.includes(user.email.toLowerCase())) {
     window.location.href = "login.html";
   } else {
