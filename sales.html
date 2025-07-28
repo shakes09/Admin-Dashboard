@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sales Report - Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-toggle" id="sidebarToggle" role="button" tabindex="0">☰</div>
+    <ul class="sidebar-menu">
+      <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="orders.html"><i class="fas fa-box"></i> Orders</a></li>
+      <li><a href="products.html"><i class="fas fa-tags"></i> Products</a></li>
+      <li><a href="sales.html" class="active"><i class="fas fa-chart-line"></i> Sales Report</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" id="mainContent">
+    <header class="header">
+      <h1>Sales Report</h1>
+      <p>Track your performance metrics below.</p>
+    </header>
+
+    <!-- Stats -->
+    <section class="stats-cards">
+      <div class="card">
+        <h3>Total Revenue</h3>
+        <p id="totalRevenue">R0</p>
+      </div>
+      <div class="card">
+        <h3>Total Orders</h3>
+        <p id="totalOrders">0</p>
+      </div>
+    </section>
+
+    <!-- Toggle + Chart -->
+    <section>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+        <h2>Sales Overview</h2>
+        <select id="chartToggle" style="padding: 6px 12px; font-size: 14px;">
+          <option value="revenue">Revenue (R)</option>
+          <option value="orders">Order Count</option>
+        </select>
+      </div>
+
+      <div id="chartContainer" style="width: 100%; max-width: 800px; margin: 20px auto;">
+        <!-- Chart inserted by sales.js -->
+      </div>
+    </section>
+
+    <!-- Recent Orders -->
+    <section>
+      <h2>Recent Orders</h2>
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="recentOrders">
+          <!-- Filled by sales.js -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <!-- Your scripts -->
+  <script type="module" src="sales.js"></script>
+
+  <!-- Sidebar toggle -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('sidebarToggle');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+      document.getElementById('mainContent').classList.toggle('expanded');
+    });
+  </script>
+
+</body>
+</html>
